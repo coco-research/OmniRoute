@@ -229,3 +229,8 @@ docs/prompts/AGENT-OWNERSHIP-PROTOCOL.md
 docs/prompts/AGENT-OWNERSHIP-PROTOCOL.omniroute-mim.md
 docs/prompts/AGENT-OWNERSHIP-PROTOCOL.omniroute-mid.md
 omniroute.md
+__pycache__/
+keyfarm/screenshots/
+*.pyc
+keyfarm/harvested_keys.json
+.codegraph/

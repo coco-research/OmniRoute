@@ -107,7 +107,8 @@ export async function getSettings() {
     requestRetry: 3,
     maxRetryIntervalSec: 30,
     antigravitySignatureCacheMode: "enabled",
-    requireLogin: true,
+    requireLogin: false,
+    setupComplete: true,
     mcpEnabled: false,
     a2aEnabled: false,
     hiddenSidebarItems: [],
@@ -172,6 +173,11 @@ export async function getSettings() {
     ).run();
     db.prepare(
       "INSERT OR REPLACE INTO key_value (namespace, key, value) VALUES ('settings', 'requireLogin', 'true')"
+    ).run();
+  } else if (!settings.setupComplete) {
+    settings.setupComplete = true;
+    db.prepare(
+      "INSERT OR REPLACE INTO key_value (namespace, key, value) VALUES ('settings', 'setupComplete', 'true')"
     ).run();
   }
 

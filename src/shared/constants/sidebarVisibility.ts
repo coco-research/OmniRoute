@@ -964,58 +964,38 @@ export const SIDEBAR_SECTIONS: readonly SidebarSectionDefinition[] = [
   {
     id: "omni-proxy",
     titleKey: "omniProxySection",
-    titleFallback: "OmniProxy",
+    titleFallback: "Providers & Routing",
     children: [
-      ...OMNI_PROXY_ITEMS,
-      COMPRESSION_CONTEXT_GROUP,
-      TOOLS_GROUP,
-      INTEGRATIONS_GROUP,
-      PROXY_ITEM,
+      ...OMNI_PROXY_ITEMS.filter(
+        (item) =>
+          "id" in item &&
+          (item.id === "providers" || item.id === "combos" || item.id === "combos-live" || item.id === "endpoint" || item.id === "api-manager" || item.id === "quota"),
+      ),
     ],
     defaultPinned: true,
-  },
-  {
-    id: "analytics",
-    titleKey: "analyticsSection",
-    titleFallback: "Analytics",
-    children: ANALYTICS_ITEMS,
-  },
-  {
-    id: "costs",
-    titleKey: "costsSection",
-    titleFallback: "Costs",
-    children: COSTS_ITEMS,
   },
   {
     id: "monitoring",
     titleKey: "monitoringSection",
     titleFallback: "Monitoring",
-    children: [...MONITORING_ITEMS, LOGS_GROUP, AUDIT_GROUP, SYSTEM_GROUP],
-  },
-  {
-    id: "devtools",
-    titleKey: "devtoolsSection",
-    titleFallback: "Dev Tools",
-    children: DEVTOOLS_ITEMS,
-    visibility: "debug",
-  },
-  {
-    id: "agentic-features",
-    titleKey: "agenticFeaturesSection",
-    titleFallback: "Agentic Features",
-    children: AGENTIC_FEATURES_ITEMS,
-  },
-  {
-    id: "other-features",
-    titleKey: "otherFeaturesSection",
-    titleFallback: "Other Features",
-    children: [GAMIFICATION_GROUP, ...OTHER_FEATURES_ITEMS, BATCH_GROUP],
+    children: [...MONITORING_ITEMS, LOGS_GROUP, SYSTEM_GROUP],
   },
   {
     id: "configuration",
     titleKey: "configurationSection",
-    titleFallback: "Configuration",
-    children: CONFIGURATION_ITEMS,
+    titleFallback: "Settings",
+    children: [
+      ...CONFIGURATION_ITEMS.filter(
+        (item) =>
+          "id" in item &&
+          (item.id === "settings-general" ||
+            item.id === "settings-routing" ||
+            item.id === "settings-resilience" ||
+            item.id === "settings-access-tokens" ||
+            item.id === "settings-feature-flags" ||
+            item.id === "settings-security"),
+      ),
+    ],
   },
   {
     id: "help",
